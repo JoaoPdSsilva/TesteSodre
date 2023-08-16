@@ -29,10 +29,10 @@
           <a class="nav-link" href="?page=listar">Listar colaboradores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?page=salvarCargo">Novo colaborador</a>
+          <a class="nav-link" href="?page=novoCargo">Novos Cargos</a>
 </li>
           <li class="nav-item">
-          <a class="nav-link" href="?page=salvarEnd">Novo Endereço</a>
+          <a class="nav-link" href="?page=listarCargo">Listar Cargos</a>
           </li>
       </form>
     </div>
@@ -61,12 +61,15 @@
         case "editar":
           include("editar-usuario.php");
       break;
-        case "salvarEnd":
-          include("salvar-end.php");
+        case "salvarCargo":
+          include("salvar-cargos.php");
       break;
-      case "salvarCargo":
-        include("salvar-cargo.php");
+      case "novoCargo":
+        include("novo-cargo.php");
     break;
+    case "listarCargo":
+      include("listar-cargos.php");
+  break;
         default:
             print "<h1>Bem Vindo!</h1>";
     }
