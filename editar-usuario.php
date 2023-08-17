@@ -12,7 +12,7 @@
     <div class="mb-3">
 
         <label>Nome</label>
-        <input type="text" name="Nome" value="<?php print $row->NomeF ?>" class="form-control">
+        <input type="text" name="NomeF" value="<?php print $row->NomeF ?>" class="form-control">
     </div>
     <div class="mb-3">
         <label>ID do Cargo</label>
