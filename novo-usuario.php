@@ -28,7 +28,7 @@
 
 
     <label>Cargo:</label>
-    <select  name="CargoID" class="form-control" >
+    <select  name="CargoID" class="form-control" required>
         <option value="">Selecione um cargo</option>
 <?php
     $sql = "SELECT ID, Nome FROM cargo";
