@@ -2,7 +2,13 @@
 
 <?php
 
-$sql = "SELECT * FROM cargos";
+$sql ="SELECT Cargo.ID, Cargo.Nome, Cargo.QtdeFuncionarios, Cargo.TotalSalarios, 
+SUM(Funcionarios.Salario) AS TotalSalariosFuncionarios,
+(SELECT COUNT(*) FROM Funcionarios WHERE Funcionarios.CargoID = Cargo.ID) AS QtdeFuncionariosCargo
+FROM Cargo
+LEFT JOIN Funcionarios ON Cargo.ID = Funcionarios.CargoID
+GROUP BY Cargo.ID, Cargo.Nome, Cargo.QtdeFuncionarios, Cargo.TotalSalarios";
+
 
 $res = $conn->query($sql);
 
@@ -18,10 +24,10 @@ if($qtd > 0){
         print "</tr>";
     while($row = $res->fetch_object()){
         print "<tr>";
-        print "<td>".$row->idCargos."</td>";
-        print "<td>".$row->nome_cargo."</td>";
-        print "<td>".$row->qtdFunc."</td>";
-        print "<td>".$row->totalDeSal."</td>";
+        print "<td>".$row->ID."</td>";
+        print "<td>".$row->Nome."</td>";
+        print "<td>".$row->QtdeFuncionarios."</td>";
+        print "<td>".$row->TotalSalarios."</td>";
     }
     print "</table>";
 }else{

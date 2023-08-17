@@ -2,13 +2,15 @@
 
 switch ($_REQUEST["acaoCargo"]) {
     case 'cadastrar':
-        $nome_cargo = $_POST["cargo"];
-        ++$qtdFunc;
-        $sql= "INSERT INTO cargos (nome_cargo, qtdFunc) VALUES ( '{$nome_cargo}', '{$qtdFunc}')";
+        $Nome = $_POST["cargo"];
+        $sql= "INSERT INTO cargo (Nome) VALUES ( '{$Nome}')";
 
         $res = $conn->query($sql);
+        $resp = $sqlUpdateQtdeFuncionarios = "UPDATE Cargo SET QtdeFuncionarios = (SELECT COUNT(*) FROM Funcionarios WHERE Funcionarios.CargoID = Cargo.ID)";
 
-        if($res == true){
+        if($res && $resp== true){
+            
+
             print "<script>alert('Cargo cadastrado com sucesso!, retornando ao menu')</script>";
             print "<script>location.href = '?page=inicio';</script>";
 

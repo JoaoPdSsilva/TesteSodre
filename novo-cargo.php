@@ -8,7 +8,7 @@
     </div>
 
     <div class="mb-3">
-        <button type="submit" class="btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </div>
     
 </form>

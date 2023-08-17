@@ -2,12 +2,17 @@
 
 switch ($_REQUEST["acao"]) {
     case 'cadastrar':
-        $nome = $_POST["nome_func"];
-        $cargo = $_POST["Cargo"];
-        $salario = $_POST["salario"];
+        $nome = $_POST["NomeF"];
+        $cargo = $_POST["CargoID"];
+        $salario = $_POST["Salario"];
+        $rua =$_POST["Rua"];
+        $bairro = $_POST["Bairro"];
+        $numCasa = $_POST["NumeroCasa"];
         
-        $sql= "INSERT INTO funcionarios (nome_func, Cargo, salario) VALUES ( '{$nome}', '{$cargo}', '{$salario}')";
+        $sql = "INSERT INTO Funcionarios (NomeF, CargoID, Salario, Rua, Bairro, NumeroCasa)
+        VALUES ('$nome', '$cargo', '$salario', '$rua', '$bairro', '$numCasa')";
 
+                
         $res = $conn->query($sql);
 
         if($res == true){
@@ -20,15 +25,21 @@ switch ($_REQUEST["acao"]) {
         break;
 
     case 'editar':
-        $nome = $_POST["nome_func"];
-        $cargo = $_POST["Cargo"];
-        $salario = $_POST["salario"];
+        $nome = $_POST["NomeF"];
+        $cargo = $_POST["CargoID"];
+        $salario = $_POST["Salario"];
+        $rua =$_POST["Rua"];
+        $bairro = $_POST["Bairro"];
+        $numCasa = $_POST["NumeroCasa"];
         
         $sql= "UPDATE funcionarios SET 
-        nome_func ='{$nome}',
-        Cargo='{$cargo}',
-        salario ='{$salario}'
-        WHERE IdFunc=".$_REQUEST["id"];
+        NomeF ='{$nome}',
+        CargoID='{$cargo}',
+        Salario ='{$salario}'
+        Rua ='{$rua}',
+        Bairro='{$bairro}',
+        NumeroCasa ='{$numCasa}'
+        WHERE ID=".$_REQUEST["ID"];
 
         $res = $conn->query($sql);
 
@@ -42,7 +53,18 @@ switch ($_REQUEST["acao"]) {
         break;
 
     case 'excluir':
-        # code...
+        
+        $sql = "DELETE FROM funcionarios WHERE ID=".$_REQUEST["ID"];
+        $res = $conn->query($sql);
+
+        if($res == true){
+            print "<script>alert('Excluido com sucesso!, retornando ao menu')</script>";
+            print "<script>location.href = '?page=inicio';</script>";
+
+        } else {
+            print "<script>alert('Falha no processo de exclusão')</script>";
+        }
+
         break;
 
     default:
